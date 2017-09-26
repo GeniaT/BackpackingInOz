@@ -2,4 +2,74 @@ body {
   font-family: -apple-system
   ,BlinkMacSystemFont,Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell,
   Helvetica, Neue, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+#container {
+  display:flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 600px;
+  min-width: 400px;
+  width:auto; /*Responsive between 400 and 600px */
+  height:auto;
+  border: 1px black solid;
+  text-align: center;
+}
+
+.header, .search, .main, .userSelection, .footer {
+  width:100%;
+  height:auto;
+}
+.header {
+  /*background:yellow;*/
+}
+.main {
+
+}
+.content {
+  min-height:200px;
+}
+/*.content_items {
+  display:inline;
+}*/
+.togglesGroup {
+  display:flex;
+}
+/*trick to make the toggle of same width and height*/
+.toggle_container {
+  display: inline-block;
+  position: relative;
+  width:16.67%;
+  cursor: pointer;
+  /*background:yellow;*/
+}
+.toggle_container:after {
+    content: '';
+    display: block;
+    margin-top: 100%;
+}
+.toggle {
+  position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background-color: silver;
+   border:1px solid blue;
+}
+/*END of tricking the toggles*/
+.toggle img {
+  width:100%;
+  height:auto;
+}
+.search {
+  /*background:gray;*/
+}
+.userSelection {
+  /*background:orange;*/
+}
+.footer {
+  /*background:gray;*/
 }
