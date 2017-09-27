@@ -3,13 +3,22 @@ var React = require('react');
 class Content extends React.Component {
   render() {
     var rows = [];
-    var category = this.props.data.category;
-    this.props.data.forEach((info) => {
-      if (info.content.indexOf(this.props.filterText) === -1) {
-        return;
-      }
-       rows.push(<span className="content_items" key={info.content}> {info.content} </span>);
-    });
+
+    if (this.props.clickedToggle === null) {
+      this.props.data.forEach((info) => {
+        if (info.content.indexOf(this.props.filterText) === -1) {
+          return;
+        }
+         rows.push(<span className="content_items" key={info.content}> {info.content} </span>);
+      });
+    } else {
+      this.props.data.forEach((info) => {
+        if (info.category === this.props.clickedToggle) {
+          rows.push(<span className="content_items" key={info.content}> {info.content} </span>);
+        }
+      });
+    }
+
     return (
       <div className="content">
         {rows}
@@ -19,17 +28,29 @@ class Content extends React.Component {
 }
 
 class Toggles extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleToggleClickChange = this.handleToggleClickChange.bind(this);
+  }
+
+  handleToggleClickChange(e) {
+    this.props.handleToggleClick(e.currentTarget.id);
+    this.props.onFilterTextInput('');//clearing the searchbox to show only results related to the toggle
+  }
+
   render() {
+    // console.log(this);
     var icons = [];
     var lastImg = null;
-    this.props.data.forEach(function(element) {
+    this.props.data.forEach((element) => {
       if (lastImg === null || lastImg !== element.toggleImg) {
-        icons.push(<div className="toggle_container" key={element.toggleImg}><div className="toggle"><img src={element.toggleImg}/></div></div>);
+        icons.push(<div className="toggle_container" id={element.category} onClick={this.handleToggleClickChange} key={element.toggleImg}><div className="toggle"><img src={element.toggleImg}/></div></div>);
         lastImg = element.toggleImg;
       }
     });
     return (
-      <div className="togglesGroup">
+      <div
+        className="togglesGroup">
         {icons}
       </div>
     )
@@ -37,28 +58,20 @@ class Toggles extends React.Component {
 }
 
 class ContentAndToggles extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      userSearch: ''
-    }
-    this.searchUpdate = this.searchUpdate.bind(this);
-  }
-
-  searchUpdate(userSearch) {
-    this.setState({
-      userSearch: userSearch
-    })
-  }
-
   render() {
     return (
       <div>
         <Content
           data={this.props.data}
           filterText={this.props.filterText}
+          clickedToggle={this.props.clickedToggle}
         />
-        <Toggles data={this.props.data}/>
+        <Toggles
+          data={this.props.data}
+          onFilterTextInput={this.props.onFilterTextInput}//passing to clear the search when clicking on toggles
+          clickedToggle={this.props.clickedToggle}
+          handleToggleClick={this.props.handleToggleClick}
+        />
       </div>
     )
   }

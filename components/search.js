@@ -8,10 +8,10 @@ class SearchBox extends React.Component {
 
   handleFilterTextInputChange(e) {
     this.props.onFilterTextInput(e.target.value);
+    this.props.handleToggleClick(null);//setting the clickedToggle to null when searching
   }
 
   render() {
-      console.log('in searchbox' + this.props);
     return (
       <form>
         <input
@@ -37,13 +37,15 @@ class UnderSearchText extends React.Component {
 
 class Search extends React.Component {
   render() {
-    console.log('in search' + this.props);
-
     return (
       <div className="search">
         <SearchBox
           filterText={this.props.filterText}
-          onFilterTextInput={this.props.onFilterTextInput}/>
+          onFilterTextInput={this.props.onFilterTextInput}
+          //passing to modifiy the value of clickedToggle when searching
+          clickedToggle={this.props.clickedToggle}
+          handleToggleClick={this.props.handleToggleClick}
+        />
         <UnderSearchText />
       </div>
     )
