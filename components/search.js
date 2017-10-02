@@ -29,7 +29,7 @@ class UnderSearchText extends React.Component {
   render() {
     return (
       <div>
-        <p>Have a question? Use Search to find more information!</p>
+        <h4>Use Search to find the information you need!</h4>
       </div>
     )
   }

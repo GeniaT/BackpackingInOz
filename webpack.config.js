@@ -8,9 +8,9 @@ module.exports = {
     filename: 'index_bundle.js'
   },
   module: { //modifications to apply to the code before outputing it
-    rules: [
-      { test: /\.(js)$/, use: 'babel-loader' }, //For each type of file, a specific loader is used
-      { test: /\.css$/, use: ['style-loader', 'css-loader']}
+    loaders: [
+      { test: /\.(js)$/, loader: 'babel-loader' }, //For each type of file, a specific loader is used
+      { test: /\.css$/, loader: ['style-loader', 'css-loader']}
     ]
   },
   plugins: [new HtmlWebpackPlugin({ //what will allows us to put our code in html form after webpack transformation&output
