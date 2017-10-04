@@ -2,27 +2,13 @@ var React = require('react');
 var PropTypes = require('prop-types');
 
 class Content extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.handleItemSelectedChange = this.handleItemSelectedChange.bind(this);
-  // }
-  //
-  // handleItemSelectedChange() {
-  //   this.props.onItemSelected(e);
-  // }
-  //
-
   constructor(props) {
     super(props);
     this.handleSelectedPropChange=this.handleSelectedPropChange.bind(this);
   }
 
   handleSelectedPropChange(e) {
-    // console.log(this.props.data);
-    // console.log('test: ' + e.currentTarget.innerText);
-    // console.log("data[0] from content: " + this.props.data[0].content);
     this.props.updateSelectPropInData(e.currentTarget.innerText);
-    console.log(this.props.data[0]);
   }
 
   render() {
@@ -99,7 +85,6 @@ class ContentAndToggles extends React.Component {
           data={this.props.data}
           filterText={this.props.filterText}
           clickedToggle={this.props.clickedToggle}
-          // onItemSelected={this.props.onItemSelected}
           updateSelectPropInData={this.props.updateSelectPropInData}
         />
         <Toggles

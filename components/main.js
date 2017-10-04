@@ -11,7 +11,6 @@ class Main extends React.Component {
         filterText: '',
         clickedToggle: null,
         data: this.props.data
-        // selected: this.props.data[0].selected
       };
       this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
       this.handleToggleClick = this.handleToggleClick.bind(this);
@@ -31,18 +30,16 @@ class Main extends React.Component {
     }
 
     updateSelectPropInData(text) {
+      //creating a copy of the initial data, update it and replace the initial data with the updated copy
       const newArray = this.state.data;
-      // add code to get the right obj
-      newArray[0].selected = true; //change this to dynamically update the right obj
+      let index = newArray.findIndex(x => x.content === text);
+      newArray[index].selected = true; //
       this.setState({
         data: newArray
       });
-      // console.log(selected);
-      // console.log(this.state.data);
    }
 
   render() {
-    console.log(this.state.data);
     return (
       <div className="main">
         <Search
@@ -58,7 +55,6 @@ class Main extends React.Component {
           onFilterTextInput={this.handleFilterTextInput}//passing to clear the search box when clicking on toggles
           clickedToggle={this.state.clickedToggle}
           handleToggleClick={this.handleToggleClick}
-          // onItemSelected={this.handleSelectEdit}
           updateSelectPropInData = {this.updateSelectPropInData}
         />
         <UserSelection
