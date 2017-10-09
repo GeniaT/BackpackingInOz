@@ -4,6 +4,7 @@ body {
   Helvetica, Neue, sans-serif;
   height: 100%;
   width: 100%;
+  background-color:#a6dafc;
 }
 
 #container {
@@ -14,7 +15,9 @@ body {
   min-width: 400px;
   width:auto; /*Responsive between 400 and 600px */
   height:auto;
-  border: 1px black solid;
+  background-color: white;
+  /*border: 1px black solid;*/
+  border-radius:10px;
   text-align: center;
 }
 
@@ -22,18 +25,11 @@ body {
   width:100%;
   height:auto;
 }
-.header {
-  /*background:yellow;*/
-}
-.main {
 
-}
 .content {
   min-height:200px;
 }
-/*.content_items {
-  display:inline;
-}*/
+
 .togglesGroup {
   display:flex;
 }
@@ -43,6 +39,7 @@ body {
   position: relative;
   width:16.67%;
   cursor: pointer;
+  height:100px;
   /*background:yellow;*/
 }
 .toggle_container:after {
@@ -56,20 +53,51 @@ body {
    bottom: 0;
    left: 0;
    right: 0;
-   background-color: silver;
-   border:1px solid blue;
 }
+
 /*END of tricking the toggles*/
-.toggle img {
+.toggle i {
   width:100%;
   height:auto;
 }
-.search {
-  /*background:gray;*/
+
+i:hover {
+  color:#571393;
 }
-.userSelection {
-  /*background:orange;*/
+.tooltip {
+  position: relative;
+  display: inline-block;
 }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #66b3ff;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: 15px;
+  margin-left: 50%;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
 .footer {
-  /*background:gray;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:gray;
+}
+.textNearFooterIcon a {
+  text-decoration:none;
+  color:#44a5f4;
+}
+
+.footerIcon {
+  height:50px;
 }

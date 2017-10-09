@@ -63,7 +63,7 @@ class Toggles extends React.Component {
     var lastImg = null;
     this.props.data.forEach((element) => {
       if (lastImg === null || lastImg !== element.toggleImg) {
-        icons.push(<div className="toggle_container" id={element.category} onClick={this.handleToggleClickChange} key={element.toggleImg}><div className="toggle"><img src={element.toggleImg}/></div></div>);
+        icons.push(<div className="toggle_container" id={element.category} onClick={this.handleToggleClickChange} key={element.toggleImg}><div className="toggle tooltip"><span className="tooltiptext">{element.category}</span><i className={element.toggleImg}></i></div></div>);
         lastImg = element.toggleImg;
       }
     });
